@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <!-- Übersicht der Angebote innerhalb der gewählten Kategorie -->
+  <div class="row">
+    <!-- Wenn keine Angebote vorhanden sind, zeige eine Fehlermeldung -->
+    <div class="col-md-12" *ngIf="noOffersFound" class="text-danger mt-5">
+      <p>Noch kein Angebot in dieser Kategorie.</p>
+    </div>
+
+    <!-- Wenn Angebote vorhanden sind, zeige sie -->
+    <div class="col-md-3" *ngFor="let offer of offersInCategory">
+      <div class="image-container">
+        <img [src]="offer.mainImagePath" class="img-fluid">
+        <div class="image-overlay">
+          <div class="image-title">
+            <!-- Link zum Einzelangebot -->
+            <a [routerLink]="['/tauschen', offer.id]">{{ offer.name }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,203 @@
+/*----------------Überschrift----------------------*/
+#my-headline {
+  margin-top: 50px;
+  font-size: 70px;
+  color: #007073;
+  font-weight: bold;
+
+}/*----------------Container und Ansicht für Hauptbild----------------------*/
+.main-image-container {
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 50px auto;
+  max-width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  max-width: 400px;
+}
+
+.my-button-style {
+  background-color: #007073;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.my-button-style:hover {
+    background-color: #0DBDAD;
+}
+
+.main-image-preview {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    object-position: bottom;
+}
+
+/*----------------bis zu 3 weitere Bilder als Vorschaubilder----------------------*/
+.additional-images {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.thumbnail-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+/*----------------Button---------------------*/
+
+.btn-normal-width {
+    max-width: 400px;
+    display: block;
+    margin-left: 70px !important;
+    Margin-top: 0 !important;
+}
+/*----------------Fehlermeldung zu viele Bilder hochgeladen---------------------*/
+
+.image-upload-error {
+  text-align: center;
+  color: red;
+  margin-bottom: 10px;
+}
+
+/*----------------Textfeld----------------------*/
+.text-field {
+    margin: 50px 0;
+    color: #007073;
+}
+
+.text-field textarea {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #F9F7F0;
+    font-size: 16px;
+    color: #007073;
+}
+
+/*------Platzhaltertext-----*/
+.text-field textarea::placeholder {
+    color: #aaa;
+}
+
+/*------Fokus-Zustand------*/
+.text-field textarea:focus {
+    outline: none;
+    border-color: #007073;
+    box-shadow: 0px 0px 8px rgba(0, 112, 115, 0.5);
+}
+
+/*------Fehlermeldung------*/
+.error-message {
+    color: red;
+    margin-top: 5px;
+    display: none;
+}
+
+/*------Zeige die Fehlermeldung nur, wenn das Feld Fehler hat------ */
+.ng-invalid.ng-touched .error-message {
+    display: block;
+}
+/*----------------Preisfeld---------------------*/
+#price {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #F9F7F0;
+    font-size: 16px;
+    color: #007073;
+    outline: none;
+}
+
+#price:focus {
+    border-color: #007073;
+    box-shadow: 0px 0px 8px rgba(0, 112, 115, 0.5);
+}
+/*----------------Verstecken der Browser Spin-Buttons---------------------*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/*----------------Platzhaltertext---------------------*/
+#price::placeholder {
+    color: #aaa;
+}
+
+.price-tag {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+}
+.dropdown-fields {
+  margin-bottom: 20px;
+}
+/*----------------Dropdown---------------------*/
+
+#my-fields {
+   margin-top: 50px;
+   padding-right: 80px;
+   background-color: #F9F7F0;
+}
+.category {
+  margin-top: 70px;
+}
+
+select, input[type="text"], input[type="email"] {
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #007073;
+  background-color: #F9F7F0;
+  outline: none;
+  width: 100%;
+}
+
+select:focus, input[type="text"]:focus, input[type="email"]:focus {
+  border-color: #007073;
+  background-color: #F9F7F0;
+}
+.custom-rate-unit-field {
+    margin-top: 0.3rem;
+    margin-left: -3rem;
+    color: #007073;
+    width: 200px;
+}
+

@@ -1,0 +1,128 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-12 text-center" id="my-headline">
+      {{ handelForm.get('name')?.value }}
+    </div>
+  </div>
+  <form [formGroup]="handelForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-4">
+        <!-- Container für das Hauptbild -->
+        <div class="main-image-container">
+          <img *ngIf="handelForm.get('mainImage')?.value" [src]="handelForm.get('mainImage')?.value" class="img-fluid main-image-preview">
+        </div>
+        <!-- Container für zusätzliche Bilder (Thumbnails) -->
+        <div class="additional-images">
+          <div class="thumbnail-container">
+            <img *ngFor="let url of thumbnailUrls" [src]="url" class="thumbnail-preview" (click)="setMainImageFromThumbnail(url)">
+          </div>
+        </div>
+        <!-- Button für Bildauswahl und Fehlermeldung, wenn kein Hauptbild vorhanden ist -->
+        <div class="file-upload">
+          <div *ngIf="maxImagesReached" class="image-upload-error" style="color: red;">
+            <p>Maximale Bilderanzahl erreicht!</p>
+          </div>
+          <button type="button" class="my-button-style" (click)="fileInput.click()">Bild(er) auswählen</button>
+          <input type="file" id="main-image" #fileInput (change)="onFileSelect($event)" style="display: none;">
+          <div *ngIf="imageUploadError && formSubmitted" class="error-message" style="color: red;">
+            {{ imageUploadError }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <!-- Textfeld Beschreibung -->
+        <div class="text-field">
+          <textarea id="description" formControlName="description" maxlength="3000" placeholder="Beschreibung" class="form-control"></textarea>
+          <div *ngIf="handelForm.get('description')?.invalid && formSubmitted" class="error-message" style="color: red;">
+            Beschreibung ist erforderlich!
+          </div>
+        </div>
+        <div class="row">
+          <!-- Preisfeld -->
+          <div class="col-md-6 pt-4">
+            <div class="input-field">
+              <label for="price"></label>
+              <input type="number" id="price" formControlName="price" placeholder="Preis">
+              <div *ngIf="handelForm.get('price')?.invalid && formSubmitted" class="error-message">
+                Preis ist erforderlich.
+              </div>
+            </div>
+          </div>
+          <!-- Preis-Einheit Dropdown -->
+          <div class="col-md-6">
+            <div class="input-field custom-rate-unit-field">
+              <label for="rateUnit"><strong>Preis pro Einheit:</strong></label>
+              <select id="rateUnit" formControlName="rateUnit">
+                <option value="pauschal">pauschal</option>
+                <option value="pro Stück">pro Stück</option>
+                <option value="pro Stunde">pro Stunde</option>
+                <option value="pro Woche">pro Woche</option>
+                <option value="pro Monat">pro Monat</option>
+              </select>
+              <div *ngIf="handelForm.get('rateUnit')?.invalid && formSubmitted" class="error-message">
+                Auswahl einer Preis-Einheit ist erforderlich.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="user" class="user-info">
+          <div class="input-field mt-5" style="color: #007073;">
+            <label class="email-display"><strong>Kontakt E-Mail: {{ user.email }}</strong></label>
+          </div>
+        </div>
+        <!-- Button zum Absenden des Formulars -->
+        <div class="row justify-content-center align-items-center mt-5">
+          <button type="submit" class="btn-normal-width my-button-style">Tauschangebot erstellen</button>
+        </div>
+      </div>
+      <div class="col-md-4" id="my-fields">
+        <div class="input-field" style="color: #007073;">
+          <!-- Bezeichnung -->
+          <label for="name-input"><strong>Bezeichnung:</strong></label>
+          <input type="text" id="name-input" formControlName="name" class="form-control" required>
+          <div *ngIf="handelForm.get('name')?.invalid && formSubmitted" class="error-message">
+            Bezeichnung ist erforderlich.
+          </div>
+        </div>
+        <div class="dropdown-fields mt-3" style="color: #007073;">
+          <!-- Tauschhandel Dropdown -->
+          <label for="trading-select"><strong>Tauschhandel:</strong></label>
+          <select id="trading-select" formControlName="tradeType">
+            <option value="TandlerSpot: Tausch von Gütern">TandlerSpot: Tausch von Gütern</option>
+            <option value="TagwerkHub: Tausch von Dienstleistungen">TagwerkHub: Tausch von Dienstleistungen</option>
+          </select>
+          <div *ngIf="handelForm.get('tradeType')?.invalid && formSubmitted" class="error-message">
+            Tauschhandels ist erforderlich.
+          </div>
+        </div>
+        <div class="condition mt-5" style="color: #007073;">
+          <!-- Zustand Dropdown -->
+          <label for="condition-select"><strong>Zustand:</strong></label>
+          <select id="condition-select" formControlName="condition">
+            <!-- Zustände für Item -->
+            <option value="neu/noch nicht benutzt">neu/noch nicht benutzt</option>
+            <option value="neuwertig/kaum Gebrauchsspuren">neuwertig/kaum Gebrauchsspuren</option>
+            <option value="gebraucht/mit einigen Gebrauchsspuren">gebraucht/mit einigen Gebrauchsspuren</option>
+            <!-- Zustände für Service -->
+            <option value="Profi">Profi</option>
+            <option value="Hobby">Hobby</option>
+            <option value="Mithelfer">Mithelfer</option>
+          </select>
+          <div *ngIf="handelForm.get('condition')?.invalid && formSubmitted" class="error-message">
+            Angabe des Zustands ist erforderlich.
+          </div>
+        </div>
+        <div class="category mt-7" style="color: #007073;">
+          <!-- Kategorie Dropdown -->
+          <label for="category-select"><strong>Kategorie:</strong></label>
+          <select id="category-select" formControlName="category">
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+          </select>
+          <div *ngIf="handelForm.get('category')?.invalid && formSubmitted" class="error-message">
+            Auswahl einer Kategorie ist erforderlich.
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

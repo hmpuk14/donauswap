@@ -1,0 +1,155 @@
+/*----------------Überschrift----------------------*/
+.my-headline {
+  margin-top: 80px;
+  margin-left: 120px;
+  font-size: 70px;
+  color: #007073;
+  font-weight: bold;
+}
+/*----------------Text----------------------*/
+.my-text {
+  margin-top: 50px;
+  margin-left: 120px;
+  font-size: 30px;
+  color: #576772;
+  font-weight: bold;
+}
+.my-text-two {
+  margin-top: 50px;
+  font-size: 30px;
+  color: #576772;
+  font-weight: bold;
+}
+/*----------------Betrag-Feld und Button----------------------*/
+.my-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form-group {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.my-text-two {
+  display: block;
+  margin-bottom: 5px;
+}
+/*----------------Verstecken der Browser Spin-Buttons---------------------*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+/*----------------Button----------------------*/
+.my-button-style {
+  background-color: #007073;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.my-button-style:hover {
+    background-color: #0DBDAD;
+}
+/*----------------Feld Donaucoin-Kauf----------------------*/
+.custom-input {
+
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #F9F7F0;
+    font-size: 16px;
+    color: #007073;
+    outline: none;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+/*------Fehlermeldung------*/
+.error-message {
+    color: red;
+    margin-top: 5px;
+    display: none;
+}
+
+/*------Zeige die Fehlermeldung nur, wenn das Feld Fehler hat------ */
+.ng-invalid.ng-touched .error-message {
+    display: block;
+}
+/*----------------Video Container----------------------*/
+.video-container {
+    margin-top: 140px;
+    margin-left: 180px;
+    overflow-y: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    z-index: 1;
+}
+#background-video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+/*----------------Modal----------------------*/
+.modal-dialog {
+  margin-top: 70px;
+}
+#loginInput {
+    border-bottom: none;
+}
+.modal-header {
+    border-bottom: 2px solid #D0F4FC;
+}
+
+.modal-content {
+  background-color: #DFF7FD;
+  color: #344039;
+}
+.modal-content:active {
+  background-color: #DFF7FD;
+  color: #344039;
+  border-color: #344039;
+}
+.has-error input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.btn-primary {
+  background-color: rgba(0,0,0,0) ;
+  border-color: #344039;
+  color: #344039;
+}
+.btn-primary:hover {
+  background-color: rgba(0,0,0,0) ;
+  border-color: #344039;
+  color: #FFFFFF;
+}
+.btn-custom:active {
+  background-color: rgba(0,0,0,0) ;
+    border-color: #344039;
+   color: #FFFFFF;
+}
+.modal-footer {
+  display: flex;
+  justify-content: flex-start;
+}

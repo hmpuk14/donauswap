@@ -1,0 +1,151 @@
+<!-- TITEL - VIDEO -->
+<div class="centered-title">
+  <h1><b>DonauSwap</b></h1>
+  <h1><b>24/7 Tauschhandel</b></h1>
+</div>
+<!-- Videocontainer -->
+<div class="video-container">
+  <video autoplay muted loop id="background-video" #backgroundVideo>
+    <source src="assets/video/video_hp_final.mp4" type="video/mp4">
+    Dein Browser unterstützt Video nicht.
+  </video>
+  <!-- Button zu Kategroien TandlerSpot -->
+  <a href="#tandlerspot" class="btn btn-secondary-tandlerspot">zu den Gütern</a>
+  <!-- Button zu Kategroien TagwerkHub -->
+  <a href="#tagwerkhub" class="btn btn-secondary-tagwerkhub">zu den Dienstleistungen</a>
+</div>
+<!-- MARKTPLATZ - TAUSCHANGEBOTE-->
+<div id="tauschangebote">
+  <!-- Suchleiste -->
+  <div class="search-bar">
+    <div class="search-container">
+      <img src="assets/images/lupe_s.svg" class="search-icon">
+      <input type="text" class="search-input" [(ngModel)]="searchTerm" (keyup.enter)="onSearchTermChange(searchTerm)">
+    </div>
+  </div>
+  <!-- Angebote -->
+  <div class="container-fluid">
+    <!-- Übersicht Angebote -->
+    <div class="row" *ngFor="let row of images | slice:0:8; let i = index">
+      <ng-container *ngIf="i % 4 === 0">
+        <div class="col-md-3" *ngFor="let image of images | slice:i:i+4">
+          <div class="image-container">
+            <img [src]="image.picturePath" class="img-fluid">
+            <div class="image-overlay">
+              <div class="image-title">
+                <!-- Router-Link hinzugefügt -->
+                <a [routerLink]="['/tauschen', image.tradeable.id]">{{ image.tradeable.name }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<!-- ÜBER DONAUSWAP  -->
+<div class="container mt-4 custom-container">
+  <div class="row">
+    <div class="col">
+      <div class="my-headline">
+        DonauSwap<br>
+        24/7 Trading
+      </div>
+      <div class="my-text">
+        <p>Die Plattform ist ein nachhaltiges Ökosystem, das die traditionellen Werte des Tauschhandels mit moderner Technologie verbindet, um ein nachhaltiges Wirtschaften zu fördern, Ressourcen zu schonen und die Gemeinschaft durch den Austausch von Gütern und Dienstleistungen zu stärken</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- TANDLERSPOT KATEGORIEN -->
+<div id="tandlerspot">
+  <div class="my-custom-container">
+    <div class="row">
+      <!-- Linke Seite mit Beschreibung -->
+      <div class="col-md-3 backg-primary">
+        <img src="assets/images/truhe_w.svg" alt="Tauschwaren" class="icon">
+        <div class="my-category-hl">
+          TandlerSpot
+          <p class="my-category-hl2">Tausch von Gütern!</p>
+        </div>
+        <p class="my-text-kategorie">Entdecke auch die zahlreichen weiteren Tauschgegenstände. Einfach stöbern und darauf los tauschen!</p>
+      </div>
+      <!-- Rechte Seite mit Kategorien -->
+      <div class="col-md-9 backg-secondary">
+        <!-- Wrapper für den Slider -->
+        <div class="slider-wrapper">
+          <!-- Slick Slider Container -->
+          <div class="slick-slider">
+            <div *ngFor="let category of getFilteredCategoriesFirstSet()">
+              <div class="slider-container">
+                <img [src]="category.picturePath" alt="{{ category.name }}">
+                <div class="slider-overlay">
+                  <div class="image-title">
+                    <!-- Router-Link hinzugefügt -->
+                    <a [routerLink]="['/kategorie', category.id]">{{ category.name }}</a>
+                  </div>
+                </div>
+              </div>
+              <p class="text-categorie">{{ category.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ÜBER DONAUCOIN  -->
+<div class="my-custom-container">
+  <div class="row">
+    <div class="col">
+      <div class="my-headline-right">
+        DonauCoin<br>
+      </div>
+      <div class="my-text-right">
+        <p class="text-start">Das Zahlungsmittel der Plattform sind DonauCoin. Damit musst Du<br>
+          Güter oder Dienstleistungen nicht direkt tauschen. Du kannst<br>
+          DonauCoin gegen Euro einwechseln und für  Produkte, oder<br>
+          Dienstleistungen, die Du tauschen möchtest einsetzen. Natürlich kannst<br>
+          Du auch selbst Waren oder Dienstleistungen anbieten. Setz dafür einfach<br>
+          einen Preis in DonauCoin fest. Natürlich gilt auch hier 1 € = 1 DC.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- TAGWERKHUB KATEGORIEN -->
+<div id="tagwerkhub">
+  <div class="my-custom-container">
+    <div class="row">
+      <!-- Linke Seite mit Kategorien -->
+      <div class="col-md-9 backg-secondary">
+        <!-- Wrapper für den Slider -->
+        <div class="slider-wrapper">
+          <!-- Slick Slider Container -->
+          <div class="slick-slider">
+            <div *ngFor="let category of getFilteredCategoriesSecondSet()">
+              <div class="slider-container">
+                <img [src]="category.picturePath" alt="{{ category.name }}">
+                <div class="slider-overlay">
+                  <div class="image-title">
+                    <!-- Router-Link hinzugefügt -->
+                    <a [routerLink]="['/kategorie', category.id]">{{ category.name }}</a>
+                  </div>
+                </div>
+              </div>
+              <p class="text-categorie">{{ category.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Rechte Seite mit Beschreibung -->
+      <div class="col-md-3 backg-primary">
+        <img src="assets/images/hammer_w.svg" alt="Tauschwaren" class="icon">
+        <div class="my-category-hl">
+          TagwerkHub
+          <p class="my-category-hl3">Tausch von Dienstleistungen!</p>
+        </div>
+        <p class="my-text-kategorie-right">Entdecke auch die zahlreichen weiteren Dienstleistungen. Einfach stöbern und drauf los tauschen!</p>
+      </div>
+    </div>
+  </div>
+</div>

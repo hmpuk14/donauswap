@@ -1,0 +1,34 @@
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onLogin()">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label">E-Mail</label>
+            <input type="email" class="form-control" id="loginEmail" [(ngModel)]="email" name="email" required #loginEmail="ngModel">
+            <div *ngIf="loginEmail.invalid && submitted" class="text-danger">
+              Bitte dieses Feld ausfüllen!
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label">Passwort</label>
+            <input type="password" class="form-control" id="loginPassword" [(ngModel)]="password" name="password" required #loginPassword="ngModel">
+            <div *ngIf="loginPassword.invalid && submitted" class="text-danger">
+              Bitte dieses Feld ausfüllen!
+            </div>
+          </div>
+
+          <div *ngIf="loginError" class="text-danger mb-2">
+            {{ loginError }}
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

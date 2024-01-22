@@ -1,0 +1,29 @@
+/*----------------Icons----------------------*/
+.icon-bar {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  z-index: 2;
+}
+.icon-bar a {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+  color: #576772;
+  margin-right: 5px;
+  z-index: 1000;
+}
+.icon {
+   width: 100px;
+   height: auto;
+   margin: -30px;
+}
+.icon-two {
+   width: 80px;
+   height: 50px;
+   margin: -25px;
+}

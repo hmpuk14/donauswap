@@ -1,0 +1,84 @@
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Registrierung</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form #registerForm="ngForm" (ngSubmit)="register()" novalidate>
+          <!-- Vorname -->
+          <div class="mb-3" [ngClass]="{'has-error': submitted && firstName.invalid}">
+            <label for="firstName" class="form-label">Vorname</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" required #firstName="ngModel">
+            <div *ngIf="submitted && firstName.invalid" class="text-danger">
+              Bitte dieses Feld ausfüllen!
+            </div>
+          </div>
+
+          <!-- Nachname -->
+          <div class="mb-3" [ngClass]="{'has-error': submitted && lastName.invalid}">
+            <label for="lastName" class="form-label">Nachname</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" required #lastName="ngModel">
+            <div *ngIf="submitted && lastName.invalid" class="text-danger">
+              Bitte dieses Feld ausfüllen!
+            </div>
+          </div>
+
+          <!-- Straße -->
+          <div class="mb-3" [ngClass]="{'has-error': submitted && street.invalid}">
+            <label for="street" class="form-label">Straße</label>
+            <input type="text" class="form-control" id="street" name="street" [(ngModel)]="user.street" required #street="ngModel">
+            <div *ngIf="submitted && street.invalid" class="text-danger">
+              Bitte dieses Feld ausfüllen!
+            </div>
+          </div>
+
+          <!-- PLZ -->
+          <div class="mb-3" [ngClass]="{'has-error': submitted && postalCode.invalid}">
+            <label for="postalCode" class="form-label">PLZ</label>
+            <input type="text" class="form-control" id="postalCode" name="postalCode" [(ngModel)]="user.postalCode" required #postalCode="ngModel">
+            <div *ngIf="submitted && postalCode.invalid" class="text-danger">
+              Bitte dieses Feld ausfüllen!
+            </div>
+          </div>
+
+          <!-- Ort -->
+          <div class="mb-3" [ngClass]="{'has-error': submitted && city.invalid}">
+            <label for="city" class="form-label">Ort</label>
+            <input type="text" class="form-control" id="city" name="city" [(ngModel)]="user.city" required #city="ngModel">
+            <div *ngIf="submitted && city.invalid" class="text-danger">
+              Bitte dieses Feld ausfüllen!
+            </div>
+          </div>
+
+          <!-- E-Mail -->
+          <div class="mb-3" [ngClass]="{'has-error': submitted && email.invalid}">
+            <label for="email" class="form-label">E-Mail</label>
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required #email="ngModel">
+            <div *ngIf="submitted && email.invalid" class="text-danger">
+              Bitte dieses Feld ausfüllen!
+            </div>
+          </div>
+
+          <!-- Passwort -->
+          <div class="mb-3" [ngClass]="{'has-error': submitted && password.invalid}">
+            <label for="password" class="form-label">Passwort</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required #password="ngModel">
+            <div *ngIf="submitted && password.invalid" class="text-danger">
+              Bitte dieses Feld ausfüllen!
+            </div>
+          </div>
+
+          <!-- Fehlermeldung anzeigen -->
+          <div *ngIf="registrationError" class="text-danger">
+            {{ registrationError }}
+          </div>
+
+          <!-- Formular abschicken -->
+          <button type="submit" class="btn btn-primary">Registrieren</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

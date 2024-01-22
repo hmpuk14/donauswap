@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-12 text-center" id="my-headline">
+      {{ offerDetails.name }}
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <!-- Hauptbild -->
+      <div *ngIf="mainImage" class="main-image-container">
+        <img [src]="mainImage.picturePath" class="img-fluid main-image-preview">
+      </div>
+      <!-- Thumbnails -->
+      <div class="additional-images">
+        <div class="thumbnail-container">
+          <img *ngFor="let thumbnail of thumbnails" [src]="thumbnail.picturePath" class="thumbnail-preview" (click)="setMainImage(thumbnail)">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <!-- Textfeld Beschreibung (Beibehalten für das Layout) -->
+      <div class="text-field">
+        <textarea id="description" readonly class="form-control">{{ offerDetails.description }}</textarea>
+      </div>
+      <div class="row">
+        <!-- Preis und Preis-Einheit -->
+        <div class="col-md-6">
+            <label class="text-display"><strong>Preis: {{ offerDetails.price_dcoin }},-- Euro {{ offerDetails.rate_unit }}</strong></label>
+        </div>
+        <!-- E-Mail-Adresse -->
+        <div class="user-info">
+          <label class="text-display"><strong>Kontakt E-Mail: {{ offerDetails.email }}</strong></label>
+        </div>
+      </div>
+      <!-- Button für den Tausch -->
+      <div class="row justify-content-center align-items-center mt-5">
+        <button (click)="completeTrade()" class="btn-normal-width my-button-style">Tauschen</button>
+      </div>
+      <!-- Modal für den Handel -->
+      <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog" aria-labelledby="tradeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tradeModalLabel">Tauschhandel</h5>
+              <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Die Nachricht wird hier eingefügt -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" (click)="closeModal()">Schließen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="item-info">
+        <!-- Weitere Felder -->
+        <div class="text-display"><strong>Bezeichnung:</strong> {{ offerDetails.name }}</div>
+        <div class="text-display"><strong>Tauschhandel:</strong> {{ offerDetails.trade_type }}</div>
+        <div class="text-display"><strong>Zustand:</strong> {{ offerDetails.item_condition || offerDetails.service_condition }}</div>
+        <div class="text-display"><strong>Kategorie:</strong> {{ offerDetails.category_name }}</div>
+        <!-- Anzeige Donaucoin -->
+        <div class="text-display"><strong>Saldo Donaucoin: {{ saldo }}</strong></div>
+        <!-- Button Donaucoin kaufen -->
+        <div class="text-display-special"><strong>Zu wenig Donaucoin?</strong></div>
+        <div class="mt-2">
+          <button (click)="goToDonaucoinPage()" class="btn-normal-width my-button-style">Donaucoin kaufen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

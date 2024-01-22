@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="container my-headline">
+        Kaufe Donaucoin
+      </div>
+      <div class="container my-text">
+        <p>Saldo Donaucoin: <span id="donaucoin-balance">{{ saldo }}</span></p>
+        <p>Keine Donaucoin mehr? Tausche Euro in Donaucoin!<br>
+          Dabei gilt 1 € = 1 DC</p>
+      </div>
+      <div class="container">
+        <div class="my-text">
+          <p>Wieviele Donaucoin möchtest Du kaufen?</p>
+        </div>
+        <div class="my-container">
+          <form (submit)="purchaseDonaucoin()" class="form-flex" #purchaseForm="ngForm" novalidate>
+            <!-- Betrag -->
+            <div class="form-group">
+              <label for="amount" class="my-text-two">Betrag:</label>
+              <input type="number" id="amount" [(ngModel)]="purchaseAmount" min="0.01" step="0.01" class="form-control custom-input" name="amount" #amountInput="ngModel" required>
+              <div *ngIf="amountInput.invalid && (amountInput.dirty || amountInput.touched)" class="error-message">
+                <p *ngIf="amountInput.errors?.['required']">Betrag ist erforderlich.</p>
+                <p *ngIf="amountInput.errors?.['min']">Betrag darf nicht 0 oder kleiner als 0 sein.</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <!-- Button Kauf -->
+              <button type="submit" class="my-button-style" [disabled]="!purchaseForm.valid">Donaucoin kaufen</button><p>
+              <!-- Button zum Zurückgehen zur vorherigen Seite -->
+              <button class="btn btn-secondary mt-5" (click)="goBack()">Zurück</button></p>
+            </div>
+          </form>
+          <!-- Modal -->
+          <div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="purchaseModalLabel">Kauf abgeschlossen</h5>
+                  <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Du hast Donaucoin gekauft! Bitte überweise den Betrag in Euro prompt auf unser Konto:<br>
+                  Bank: NeueDonau<br>
+                  IBAN: ATDONAU<br>
+                  BIC: DONAUSTROM
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="closeModal()">Schließen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="video-container">
+        <video autoplay muted loop id="background-video" #backgroundVideo>
+          <source src="assets/video/donaucoin.webm" type="video/webm">
+          Dein Browser unterstützt Video nicht.
+        </video>
+      </div>
+    </div>
+  </div>
+</div>

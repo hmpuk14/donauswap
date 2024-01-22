@@ -1,0 +1,34 @@
+<div class="icon-bar">
+  <!-- Menüpunkte für nicht eingeloggte Nutzer -->
+  <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" *ngIf="!authService.getIsLoggedIn()">
+    <img src="assets/images/login_s.svg" alt="Login" class="icon">
+    <b>Login</b>
+  </a>
+  <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" *ngIf="!authService.getIsLoggedIn()">
+    <b>Registrierung</b>
+  </a>
+  <a href="/#tauschangebote">
+    <img src="assets/images/pfeile_s.svg" alt="Marktplatz" class="icon">
+    <b>Marktplatz</b>
+  </a>
+  <!-- Menüpunkt "home" immer, nur nicht auf home sichtbar -->
+  <a href="#" *ngIf="isHomeVisible()">
+    <img src="assets/images/home_s.svg" alt="Home" class="icon-two">
+    <b>Home</b>
+  </a>
+  <!-- Menüpunkt "Ware" nur für eingeloggte User und nicht auf der Handelsseite -->
+  <a [routerLink]="['/handeln']" *ngIf="authService.getIsLoggedIn() && !isCurrentRoute('/handeln')">
+    <img src="assets/images/plus_s.svg" alt="handeln" class="icon-two">
+    <b>Ware</b>
+  </a>
+  <!-- Menüpunkt Donaucoin nur für eingeloggt User sichtbar -->
+  <a href="/donaucoin" *ngIf="authService.getIsLoggedIn()">
+    <img src="assets/images/coin_s.svg"  alt="DonauCoin" class="icon">
+    <b>DonauCoin</b>
+  </a>
+
+  <!-- Logout für eingeloggte User sichtbar -->
+  <a href="#" *ngIf="authService.getIsLoggedIn()" (click)="logout()">
+    <b>Logout</b>
+  </a>
+</div>

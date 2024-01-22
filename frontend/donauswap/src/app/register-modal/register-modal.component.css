@@ -1,0 +1,37 @@
+.modal-dialog {
+  margin-top: 70px;
+}
+#loginInput {
+    border-bottom: none;
+}
+.modal-header {
+    border-bottom: 2px solid #D0F4FC;
+}
+.modal-content {
+  background-color: #DFF7FD;
+  color: #344039;
+}
+.modal-content:active {
+  background-color: #DFF7FD;
+  color: #344039;
+  border-color: #344039;
+}
+.has-error input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.btn-primary {
+  background-color: rgba(0,0,0,0) ;
+  border-color: #344039;
+  color: #344039;
+}
+.btn-primary:hover {
+  background-color: rgba(0,0,0,0) ;
+  border-color: #344039;
+  color: #FFFFFF;
+}
+.btn-custom:active {
+  background-color: rgba(0,0,0,0) ;
+    border-color: #344039;
+   color: #FFFFFF;
+}
+
